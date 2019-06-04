@@ -25,25 +25,19 @@ connection = client_socket.makefile('wb')
 
 cam = cv2.VideoCapture(0)
 
-#cam.set(3, 320);
-#cam.set(4, 240);
-
 img_counter = 0
 
 encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
 
 ret, frame = cam.read()
-#frame = imutils.resize(frame, width=500)
 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 gray = cv2.GaussianBlur(gray, (21, 21), 0)
 firstFrame = gray
 
 while True:
     ret, frame = cam.read()
-    #frame = cv2.flip(frame, -1)    
   
     result, frame = cv2.imencode('.jpg', frame, encode_param)
-    #data = zlib.compress(pickle.dumps(frame, 0))
     data = pickle.dumps(frame, 0)
     size = len(data)
 
