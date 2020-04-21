@@ -11,9 +11,10 @@ from PIL import Image
 
 import imutils
 
+ip = ''
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(('192.168.11.75', 8485))
+client_socket.connect(('ip', 8485))
 connection = client_socket.makefile('wb')
 
 cam = cv2.VideoCapture(0)
